@@ -20,6 +20,14 @@ export default {
         },
         disabled: Boolean
     },
+    data() {
+        return {
+            selected: {
+                item: null,
+                index: -1
+            }
+        }
+    },
     computed: {
         classes() {
             return { "is-disabled": this.disabled };
@@ -35,14 +43,16 @@ export default {
         }
     },
     methods: {
-        classItem(item) {
+        classItem(item, index) {
             let isSelected = false;
             let isDisabled = false;
 
+            // Select item if has the same index that selected one.
             if (this.value) {
-                isSelected = item[this.itemValue] === this.value[this.itemValue];
+                isSelected = index === this.selected.index;
             };
 
+            // Get disabled from item prop 
             if (item.disabled) isDisabled = item.disabled;
 
             return {
@@ -50,8 +60,12 @@ export default {
                 'is-disabled': isDisabled
             }
         },
-        selectItem(item) {
-            // Only $emit when it is not disabled:
+        selectItem(item, index) {
+            // Save current selected item data:
+            this.selected.item = item;
+            this.selected.index = index;
+
+            // Emit selected events, only  when it is not disabled:
             if (!item.disabled && !this.disabled) {
                 this.$emit('input', item);
                 this.$emit('change', item);

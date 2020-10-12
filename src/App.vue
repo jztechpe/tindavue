@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import 'LifemilesTheme/main.scss';
+import '@juntoz/tindacss/scss/tinda.scss';
 import JzInputCounter from './components/JzInputCounter';
 import JzMenu from './components/JzMenu';
 import JzCollapse from './components/JzCollapse';
@@ -376,7 +376,11 @@ export default {
       colorItems: [
         {
           text: 'azul',
-          disabled: true,
+          ImageSmall:
+            'https://jzcatalogstg.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/9df301a0e24911eaab06d941f3746bf3/70fc4ab0e32c11eaaee3b983d622c2a4/02cb8ef0e33811eabcf5b1535dd40a53.jpg',
+        },
+        {
+          text: 'azul 2',
           ImageSmall:
             'https://jzcatalogstg.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/9df301a0e24911eaab06d941f3746bf3/70fc4ab0e32c11eaaee3b983d622c2a4/02cb8ef0e33811eabcf5b1535dd40a53.jpg',
         },
