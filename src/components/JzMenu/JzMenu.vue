@@ -4,8 +4,12 @@
       <nav class="bm-item-list">
         <a href="/">Home</a>
         <a href="#">Mi cuenta</a>
-        <a href="#">Mis ordenes <span class="text-right"><img src="../../../../LifemilesTheme/src/icons/package.svg" alt="insertar SVG con la etiqueta image" /></span></a>
-        <a href="//juntoz.xyz/nuestras-tiendas">Nuestras tiendas <span class="text-right"><img src="../../../../LifemilesTheme/src/icons/online-shopping.svg" alt="insertar SVG con la etiqueta image" /></span></a>
+        <a href="#">Mis ordenes 
+          <!-- <span class="text-right"><img src="../../../../LifemilesTheme/src/icons/package.svg" alt="insertar SVG con la etiqueta image" /></span> -->
+          </a>
+        <a href="//juntoz.xyz/nuestras-tiendas">Nuestras tiendas 
+        <!-- <span class="text-right"><img src="../../../../LifemilesTheme/src/icons/online-shopping.svg" alt="insertar SVG con la etiqueta image" /></span> -->
+        </a>
 
        <div class="line">
          <label>Categorías</label>
