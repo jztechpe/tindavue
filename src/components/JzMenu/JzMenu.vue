@@ -1,15 +1,8 @@
 <template>
   <div ref="wrapper" class="wrapper">
     <div ref="sideNav" class="bm-menu">
-      <nav class="bm-item-list">
-        <a href="/">Home</a>
-        <a href="#">Mi cuenta</a>
-        <a href="#">Mis ordenes 
-          <!-- <span class="text-right"><img src="../../../../LifemilesTheme/src/icons/package.svg" alt="insertar SVG con la etiqueta image" /></span> -->
-          </a>
-        <a href="//juntoz.xyz/nuestras-tiendas">Nuestras tiendas 
-        <!-- <span class="text-right"><img src="../../../../LifemilesTheme/src/icons/online-shopping.svg" alt="insertar SVG con la etiqueta image" /></span> -->
-        </a>
+      <nav class="bm-item-list mt-3">
+        <a href="//juntoz.xyz/nuestras-tiendas">Nuestras tiendas <span class="text-right"><img src="../../../../LifemilesTheme/src/icons/online-shopping.svg" alt="insertar SVG con la etiqueta image" /></span></a>
 
        <div class="line">
          <label>Categorías</label>
@@ -23,15 +16,6 @@
           :key="key"
         />
 
-        <div class="line">
-          <label>Servicio al cliente</label>
-        </div>
-        
-        <a href="#">Cambios y devoluciones</a>
-        <a href="#">Política de privacidad</a>
-        <a href="#">Términos legales</a>
-        <a href="#">Términos y condiciones</a>
-        <a href="#">Contáctenos</a>
       </nav>
       <span class="bm-cross-button cross-style" @click="closeMenu" :class="{ hidden: !crossIcon }">
         <span
@@ -259,7 +243,7 @@ export default {
 };
 </script>
 
-<style >
+<style>
 
 
 </style>
