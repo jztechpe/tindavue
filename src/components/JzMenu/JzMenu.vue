@@ -4,7 +4,7 @@
       <nav class="bm-item-list mt-3">
         <a href="//juntoz.xyz/nuestras-tiendas">Nuestras tiendas 
         <span class="text-right">
-          <img src="https://cdn.juntoz-staging.com/ux-lifemiles/icons/online-shopping.svg" alt="insertar SVG con la etiqueta image" />
+          <img src="https://cdn.juntoz-staging.com/ux-lifemiles/img/online-shopping.svg" alt="insertar SVG con la etiqueta image" />
           </span>
         </a>
 
