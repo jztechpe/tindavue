@@ -28,6 +28,17 @@
       </template>
     </jz-menu>
 
+    <jz-dropdown>
+      <template v-slot:trigger>
+        Hello, hover to see the dropdown!!
+      </template>
+      <template v-slot:content>
+        <div class="dropdown-item">
+          This is a content Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+        </div>
+      </template>
+    </jz-dropdown>
+
     <jz-collapse>
       <template v-slot:title>
         <p>Aquí podría ir un título de página</p>
@@ -70,6 +81,7 @@ import JzCollapse from "./components/JzCollapse";
 import JzSelectFirstImage from "./components/JzSelectFirstImage";
 import JzSelectList from "./components/JzSelectList";
 import JzModal from "./components/JzModal";
+import JzDropdown from './components/JzDropdown/JzDropdown';
 
 export default {
   name: "App",
@@ -80,6 +92,7 @@ export default {
     JzSelectFirstImage,
     JzSelectList,
     JzModal,
+    JzDropdown
   },
   data() {
     return {
