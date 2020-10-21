@@ -44,7 +44,7 @@ export default {
   },
   computed: {
     isLeaf() {
-      return !this.item.hasOwnProperty('children');
+      return !this.item.hasOwnProperty('children') && !this.item.children.length;
     },
     classX() {
       return {
