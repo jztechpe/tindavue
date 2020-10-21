@@ -16,7 +16,7 @@
           :key="key"
         />
 
-       <slot name="footer"></slot>
+        <slot name="footer"></slot>
       </nav>
       <span
         class="bm-cross-button cross-style"
@@ -36,9 +36,17 @@
         ></span>
       </span>
     </div>
-  
+    <div class="navigation d-inline-flex">
+      <div
+        class="navigation-button"
+        ref="bmBurgerButton"
+        @click="openMenu"
+        :class="{ 'is-hidden': !burgerIcon }"
+      >
+        <div class="navigation-icon" :key="'index'">&nbsp;</div>
+      </div>
+    </div>
   </div>
-
 </template>
 
 <script>
@@ -104,7 +112,8 @@ export default {
   },
   methods: {
     openMenu() {
-      this.$emit("input", this.value);
+      let value = true;
+      this.$emit("input", value);
 
       if (this.right) {
         this.$refs.sideNav.style.left = "auto";
