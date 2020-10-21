@@ -3,7 +3,12 @@
     <div class="jz-menu-dropdown-item dropdown-item" :class="classX">
       <p>{{ item.name }}</p>
 
-      <svg class="jz-menu-dropdown-icon" fill="currentColor" viewBox="0 0 20 20" v-if="!isLeaf">
+      <svg
+        class="jz-menu-dropdown-icon"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+        v-if="!isLeaf"
+      >
         <path
           fill-rule="evenodd"
           d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -14,7 +19,11 @@
     <template v-if="!isLeaf">
       <TransitionExpand>
         <div class="jz-menu-dropdown-children" v-if="isOpen">
-          <JzMenuDropdown :item="subItem" v-for="(subItem, i) in item.children" :key="i" />
+          <JzMenuDropdown
+            :item="subItem"
+            v-for="(subItem, i) in item.children"
+            :key="i"
+          />
         </div>
       </TransitionExpand>
     </template>
@@ -22,11 +31,11 @@
 </template>
 
 <script>
-import JzMenuDropdown from './JzMenuDropdown';
-import TransitionExpand from '../transitions/TransitionExpand.vue';
+import JzMenuDropdown from "./JzMenuDropdown";
+import TransitionExpand from "../transitions/TransitionExpand.vue";
 
 export default {
-  name: 'JzMenuDropdown',
+  name: "JzMenuDropdown",
   props: {
     item: {
       type: Object,
@@ -44,12 +53,12 @@ export default {
   },
   computed: {
     isLeaf() {
-      return !this.item.hasOwnProperty('children') && !this.item.children.length;
+      return !this.item.hasOwnProperty("children") || !this.item.children.length;
     },
     classX() {
       return {
-        'dropdown-item-active': this.isOpen,
-        'dropdown-item-no-active': !this.isOpen,
+        "dropdown-item-active": this.isOpen,
+        "dropdown-item-no-active": !this.isOpen,
       };
     },
   },
