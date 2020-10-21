@@ -1,3 +1,3 @@
-import JzLoading from './JzLoading'
+import JzLoading from './JzLoading.vue'
 
 export default JzLoading

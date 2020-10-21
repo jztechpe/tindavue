@@ -13,4 +13,4 @@
   </transition>
 </template>
 
-<script src="./LzLoading.js"></script>
+<script src="./JzLoading.js"></script>
