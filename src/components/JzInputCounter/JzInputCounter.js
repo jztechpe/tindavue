@@ -32,15 +32,17 @@ export default {
         increment() {
             if (this.canIncrement) {
                 let newValue = this.value + 1;
-                this.$emit('on-increment', newValue)
-                this.$emit('input', newValue)
+                this.$emit('on-increment', newValue);
+                this.$emit('input', newValue);
+                this.$emit('change', { oldValue: this.value, newValue: newValue });
             }
         },
         decrement() {
             if (this.canDecrement) {
                 let newValue = this.value - 1;
-                this.$emit('on-decrement', newValue)
-                this.$emit('input', newValue)
+                this.$emit('on-decrement', newValue);
+                this.$emit('input', newValue);
+                this.$emit('change', { oldValue: this.value, newValue: newValue });
             }
         },
     }
