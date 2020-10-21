@@ -9,7 +9,7 @@
         Open Menu
       </button>
     </div>
-    <jz-menu v-model="isMenuOpen" :categories="categories" :burgerIcon="false">
+    <jz-menu v-model="isMenuOpen" :categories="categories">
       <template v-slot:header>
         <a href="/">Home</a>
         <a href="#!">Mi cuenta</a>
