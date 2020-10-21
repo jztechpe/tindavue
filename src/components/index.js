@@ -7,4 +7,4 @@ export { default as JzModal } from './JzModal';
 export { default as JzSelectFirstImage } from './JzSelectFirstImage';
 export { default as JzSelectList } from './JzSelectList';
 // Transition
-export { TransitionExpand } from "./transitions/TransitionExpand.vue";
+export { default as TransitionExpand } from "./transitions/TransitionExpand.vue";
