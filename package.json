@@ -2,7 +2,9 @@
   "name": "@juntoz/tindavue",
   "version": "0.0.16",
   "private": false,
-  "files": ["/dist"],
+  "files": [
+    "/dist"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",

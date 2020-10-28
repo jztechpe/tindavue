@@ -13,6 +13,6 @@
 
 <script>
 export default {
-  name: 'JzDropdown',
+  name: 'JzDropdown'
 }
 </script>

@@ -29,7 +29,7 @@
     </jz-menu>
 
     <jz-dropdown>
-      <template v-slot:trigger> Hello, hover to see the dropdown!! </template>
+      <template v-slot:trigger>Hello, hover to see the dropdown!! </template>
       <template v-slot:content>
         <div class="dropdown-item">
           This is a content Lorem ipsum, dolor sit amet consectetur adipisicing
@@ -66,9 +66,37 @@
     />
     <JzSelectList v-model="tallaModel2" title="Talla2" :items="['S', 'XS']" />
 
-    <JzModal v-model="showModal">
-      <template #body> Body </template>
-    </JzModal>
+    
+
+    <div class="my-5">
+      <button class="button is-primary" @click="showLogin = true">
+        Login Button
+      </button>
+    </div>
+
+    <div class="my-5">
+      <button class="button is-primary" @click="showRegister = true">
+        Register Button
+      </button>
+    </div>
+
+    <jz-modal v-model="showLogin"  class="modal--sign">
+      <template #header>
+        <p class="has-text-centered is-flex-grow-1">Iniciar sesión</p>
+      </template>
+      <template #body>
+        <JzLoginForm></JzLoginForm>
+      </template>
+    </jz-modal>
+
+    <jz-modal v-model="showRegister" class="modal--sign">
+      <template #header>
+        <p class="has-text-centered is-flex-grow-1">Crea tu cuenta</p>
+      </template>
+      <template #body>
+        <JzRegisterForm></JzRegisterForm>
+      </template>
+    </jz-modal>
   </div>
 </template>
 
@@ -81,6 +109,8 @@ import JzSelectFirstImage from "./components/JzSelectFirstImage";
 import JzSelectList from "./components/JzSelectList";
 import JzModal from "./components/JzModal";
 import JzDropdown from "./components/JzDropdown/JzDropdown";
+import JzLoginForm from "./components/JzLoginForm/JzLoginForm";
+import JzRegisterForm from "./components/JzRegisterForm/JzRegisterForm";
 
 export default {
   name: "App",
@@ -92,10 +122,14 @@ export default {
     JzSelectList,
     JzModal,
     JzDropdown,
+    JzLoginForm,
+    JzRegisterForm,
   },
   data() {
     return {
       showModal: false,
+      showLogin: false,
+      showRegister: false,
       quantity: 1,
       isMenuOpen: false,
       categories: [

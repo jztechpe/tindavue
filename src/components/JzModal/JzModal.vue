@@ -46,3 +46,51 @@
 </template>
 
 <script src="./JzModal.js"></script>
+
+<style lang="scss" scoped>
+  // Variables
+  $color-primary: #f5333f;
+  $color-primary-light: #f5434f;
+  $color-primary-dark: #ec212f;
+
+  $color-secondary: #3f535d;
+  $color-secondary-dark: #2e3d44;
+
+  $color-interface: #2269c9;
+  $color-interface-dark: #1e59a9;
+
+  $color-text: #222222;
+  $color-text-grey: #656970;
+  $color-text-light: #808d93;
+  $color-white: #ffffff;
+
+  $color-forms: #bfc6c9 !default;
+
+  $background-color: #f2f4f4;
+
+  $color-gold: #cdb989;
+
+  $box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+
+  .modal {
+    &--sign {
+      .modal {
+        &-card {
+          max-width: 500px;
+          border-radius: 0;
+          &-head {
+            background: $background-color;
+            border-bottom: none;
+            color: $color-primary;
+            font-size: 1.4rem;
+            padding: .6rem 1.5rem;
+            border-radius: 0;
+          }
+          &-body {
+            padding: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+</style>
