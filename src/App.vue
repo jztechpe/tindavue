@@ -30,7 +30,9 @@
 
     <jz-dropdown :is-hoverable="true" :is-right="true">
       <template v-slot:trigger>
-        <button class="button" @click="isDropDownOpen = true">Hover to open dropdown</button>  
+        <button class="button" @click="isDropDownOpen = true">
+          Hover to open dropdown
+        </button>
       </template>
       <template v-slot:content>
         <div class="dropdown-item is-large">
@@ -41,7 +43,9 @@
     </jz-dropdown>
     <jz-dropdown v-model="isDropdownOpen">
       <template v-slot:trigger>
-        <button class="button" @click="isDropdownOpen = true">Click to open dropdown</button>  
+        <button class="button" @click="isDropdownOpen = true">
+          Click to open dropdown
+        </button>
       </template>
       <template v-slot:content>
         <div class="dropdown-item is-large">
@@ -91,12 +95,22 @@
       </button>
     </div>
 
-    <jz-modal v-model="showLogin"  class="modal--sign">
+    <jz-modal v-model="showLogin" class="modal--sign">
       <template #header>
         <p class="has-text-centered is-flex-grow-1">Iniciar sesión</p>
       </template>
       <template #body>
-        <JzLoginForm></JzLoginForm>
+        <jz-form :fields="loginFields" :hasSuccessMessage="false">
+          <template slot="afterSubmit">
+            <div class="field">
+              <div class="control has-text-centered">
+                <p class="mt-2">
+                  ¿No tienes una cuenta? <a href="#">Regístrate</a>
+                </p>
+              </div>
+            </div>
+          </template>
+        </jz-form>
       </template>
     </jz-modal>
 
@@ -105,7 +119,24 @@
         <p class="has-text-centered is-flex-grow-1">Crea tu cuenta</p>
       </template>
       <template #body>
-        <JzRegisterForm></JzRegisterForm>
+        <jz-form :fields="registerFields" :hasSuccessMessage="true">
+          <template slot="success" slot-scope="row">
+            <p class="has-text-centered mb-5">
+              Cuenta creada satisfactoriamente
+            </p>
+            <p class="is-size-7 has-text-centered mb-1">Email</p>
+            <p class="has-text-weight-bold has-text-centered">
+              {{ row.email }}
+            </p>
+            <p class="has-text-centered mt-3">
+              <a
+                type="submit"
+                class="button is-primary is-uppercase has-text-weight-semibold py-2"
+                >Ingresar</a
+              >
+            </p>
+          </template>
+        </jz-form>
       </template>
     </jz-modal>
   </div>
@@ -120,10 +151,9 @@ import JzSelectFirstImage from "./components/JzSelectFirstImage";
 import JzSelectList from "./components/JzSelectList";
 import JzModal from "./components/JzModal";
 import JzDropdown from "./components/JzDropdown/JzDropdown";
-import JzLoginForm from "./components/JzLoginForm/JzLoginForm";
-import JzRegisterForm from "./components/JzRegisterForm/JzRegisterForm";
+import JzForm from "./components/JzForm/JzForm";
 
-import categories from './categories';
+import categories from "./categories";
 
 export default {
   name: "App",
@@ -135,14 +165,96 @@ export default {
     JzSelectList,
     JzModal,
     JzDropdown,
-    JzLoginForm,
-    JzRegisterForm,
+    JzForm,
   },
   data() {
     return {
       showModal: false,
       showLogin: false,
       showRegister: false,
+      registerFields: [
+        {
+          name: "firstName",
+          type: "text",
+          id: "register-firstname",
+          placeholder: "Nombres",
+          required: true,
+        },
+        {
+          name: "lastName",
+          type: "text",
+          id: "register-lastname",
+          placeholder: "Apellidos",
+          required: true,
+        },
+        {
+          name: "email",
+          type: "email",
+          id: "register-email",
+          placeholder: "Email",
+          required: true,
+        },
+        {
+          name: "password",
+          type: "password",
+          id: "register-password",
+          required: true,
+          sinc: "rePassword",
+          placeholder: "Contraseña",
+          min: 8,
+        },
+        {
+          name: "rePassword",
+          type: "password",
+          id: "register-repassword",
+          placeholder: "Verificar contraseña",
+          after: `<p class="help has-text-grey-light">*Contraseña con un mínimo de 8 caracteres</p>`,
+          min: 8,
+          required: true,
+        },
+        {
+          name: "submit",
+          type: "submit",
+          id: "register-submit",
+          value: "Crear",
+        },
+      ],
+      loginFields: [
+        {
+          name: "email",
+          type: "email",
+          id: "login-email",
+          placeholder: "Email",
+          required: true,
+        },
+        {
+          name: "password",
+          type: "password",
+          id: "register-password",
+          placeholder: "Contraseña",
+          required: true,
+          enableShowPassword: true,
+          after: `<div
+                    class="field is-grouped is-justify-content-space-between is-align-items-center mb-4 mt-2"
+                  >
+                    <div class="control">
+                      <label class="mb-0 pl-0">
+                        <input type="checkbox" class="field-checkbox" />
+                        Recordar mi cuenta
+                      </label>
+                    </div>
+                    <div class="control">
+                      <a href="#">¿Olvidaste tu contraseña?</a>
+                    </div>
+                  </div>`,
+        },
+        {
+          name: "submit",
+          type: "submit",
+          id: "register-submit",
+          value: "Iniciar sesión",
+        },
+      ],
       quantity: 1,
       isMenuOpen: false,
       isDropdownOpen: false,
