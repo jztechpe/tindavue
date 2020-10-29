@@ -1,10 +1,17 @@
 <template>
-  <div class="modal" :class="{'is-active': value}">
+  <div class="modal" :class="{ 'is-active': value }">
     <div class="modal-background" @click="$emit('input', false)"></div>
     <div class="modal-card">
       <header class="modal-card-head" v-if="$slots.header">
         <slot name="header">
-          <button type="button" class="btn-close" @click="close" aria-label="Close modal">x</button>
+          <button
+            type="button"
+            class="btn-close"
+            @click="close"
+            aria-label="Close modal"
+          >
+            x
+          </button>
         </slot>
       </header>
       <section class="modal-card-body">

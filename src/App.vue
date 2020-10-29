@@ -30,7 +30,9 @@
 
     <jz-dropdown :is-hoverable="true" :is-right="true">
       <template v-slot:trigger>
-        <button class="button" @click="isDropDownOpen = true">Hover to open dropdown</button>  
+        <button class="button" @click="isDropDownOpen = true">
+          Hover to open dropdown
+        </button>
       </template>
       <template v-slot:content>
         <div class="dropdown-item is-large">
@@ -41,7 +43,9 @@
     </jz-dropdown>
     <jz-dropdown v-model="isDropdownOpen">
       <template v-slot:trigger>
-        <button class="button" @click="isDropdownOpen = true">Click to open dropdown</button>  
+        <button class="button" @click="isDropdownOpen = true">
+          Click to open dropdown
+        </button>
       </template>
       <template v-slot:content>
         <div class="dropdown-item is-large">
@@ -79,9 +83,70 @@
     />
     <JzSelectList v-model="tallaModel2" title="Talla2" :items="['S', 'XS']" />
 
-    <JzModal v-model="showModal">
-      <template #body> Body </template>
-    </JzModal>
+    <div class="my-5">
+      <button class="button is-primary" @click="showLogin = true">
+        Login Button
+      </button>
+    </div>
+
+    <div class="my-5">
+      <button class="button is-primary" @click="showRegister = true">
+        Register Button
+      </button>
+    </div>
+
+    <jz-modal v-model="showLogin" class="modal--sign">
+      <template #header>
+        <p class="has-text-centered is-flex-grow-1">Iniciar sesión</p>
+      </template>
+      <template #body>
+        <jz-form
+          :fields="loginFields"
+          :successful="loginSuccessful"
+          @submitForm="handleLoginSubmit"
+        >
+          <template slot="afterSubmit">
+            <div class="field">
+              <div class="control has-text-centered">
+                <p class="mt-2">
+                  ¿No tienes una cuenta? <a href="#">Regístrate</a>
+                </p>
+              </div>
+            </div>
+          </template>
+        </jz-form>
+      </template>
+    </jz-modal>
+
+    <jz-modal v-model="showRegister" class="modal--sign">
+      <template #header>
+        <p class="has-text-centered is-flex-grow-1">Crea tu cuenta</p>
+      </template>
+      <template #body>
+        <jz-form
+          :fields="registerFields"
+          :successful="registerSuccessful"
+          @submitForm="handleRegisterSubmit"
+        >
+          <template slot="success" slot-scope="row">
+            <p class="has-text-centered mb-5">
+              Cuenta creada satisfactoriamente
+            </p>
+            <p class="is-size-7 has-text-centered mb-1">Email</p>
+            <p class="has-text-weight-bold has-text-centered">
+              {{ row.data.Username.value }}
+            </p>
+            <p class="has-text-centered mt-3">
+              <a
+                type="submit"
+                class="button is-primary is-uppercase has-text-weight-semibold py-2"
+                >Ingresar</a
+              >
+            </p>
+          </template>
+        </jz-form>
+      </template>
+    </jz-modal>
   </div>
 </template>
 
@@ -94,8 +159,9 @@ import JzSelectFirstImage from "./components/JzSelectFirstImage";
 import JzSelectList from "./components/JzSelectList";
 import JzModal from "./components/JzModal";
 import JzDropdown from "./components/JzDropdown/JzDropdown";
+import JzForm from "./components/JzForm/JzForm";
 
-import categories from './categories';
+import categories from "./categories";
 
 export default {
   name: "App",
@@ -107,10 +173,97 @@ export default {
     JzSelectList,
     JzModal,
     JzDropdown,
+    JzForm,
   },
   data() {
     return {
       showModal: false,
+      showLogin: false,
+      showRegister: false,
+      loginSuccessful: false,
+      registerSuccessful: false,
+      registerFields: [
+        {
+          name: "firstName",
+          type: "text",
+          id: "register-firstname",
+          placeholder: "Nombres",
+          required: true,
+        },
+        {
+          name: "lastName",
+          type: "text",
+          id: "register-lastname",
+          placeholder: "Apellidos",
+          required: true,
+        },
+        {
+          name: "Username",
+          type: "email",
+          id: "register-email",
+          placeholder: "Email",
+          required: true,
+        },
+        {
+          name: "Password",
+          type: "password",
+          id: "register-password",
+          sinc: "rePassword",
+          placeholder: "Contraseña",
+          required: true,
+          min: 8,
+        },
+        {
+          name: "rePassword",
+          type: "password",
+          id: "register-repassword",
+          placeholder: "Verificar contraseña",
+          after: `<p class="help has-text-grey-light">*Contraseña con un mínimo de 8 caracteres</p>`,
+          min: 8,
+        },
+        {
+          name: "submit",
+          type: "submit",
+          id: "register-submit",
+          value: "Crear",
+        },
+      ],
+      loginFields: [
+        {
+          name: "Username",
+          type: "email",
+          id: "login-email",
+          placeholder: "Email",
+          required: true,
+        },
+        {
+          name: "Password",
+          type: "password",
+          id: "register-password",
+          placeholder: "Contraseña",
+          required: true,
+          enableShowPassword: true,
+          after: `<div
+                    class="field is-grouped is-justify-content-space-between is-align-items-center mb-4 mt-2"
+                  >
+                    <div class="control">
+                      <label class="mb-0 pl-0">
+                        <input type="checkbox" class="field-checkbox" />
+                        Recordar mi cuenta
+                      </label>
+                    </div>
+                    <div class="control">
+                      <a href="#">¿Olvidaste tu contraseña?</a>
+                    </div>
+                  </div>`,
+        },
+        {
+          name: "submit",
+          type: "submit",
+          id: "register-submit",
+          value: "Iniciar sesión",
+        },
+      ],
       quantity: 1,
       isMenuOpen: false,
       isDropdownOpen: false,
@@ -145,6 +298,16 @@ export default {
         { text: "M", value: "M", disabled: false },
       ],
     };
+  },
+  methods: {
+    handleLoginSubmit(data) {
+      console.log(data);
+      // this.loginSuccessful = true;
+    },
+    handleRegisterSubmit(data) {
+      console.log(data);
+      this.registerSuccessful = true;
+    },
   },
 };
 </script>
