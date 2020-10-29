@@ -1,10 +1,6 @@
 <template>
   <div>
-    <slot
-      v-if="hasSuccessMessage && successful"
-      name="success"
-      :email="data.email.value"
-    ></slot>
+    <slot v-if="successful" name="success" :data="data"></slot>
     <div v-if="!successful">
       <p class="has-text-centered mb-5">Ingresa tu email y contraseña</p>
       <div class="notification is-danger py-2" v-if="error">
@@ -99,7 +95,7 @@ export default {
       type: Array,
       default: () => [],
     },
-    hasSuccessMessage: {
+    successful: {
       type: Boolean,
       default: false,
     },
@@ -109,7 +105,6 @@ export default {
       data: null,
       showPassword: false,
       error: false,
-      successful: false,
       message: "",
     };
   },
@@ -120,6 +115,7 @@ export default {
         type: item["type"],
         value: item["value"] || "",
         sinc: item["sinc"] || null,
+        required: item["required"] || null,
       };
     });
     this.data = obj;
@@ -165,20 +161,23 @@ export default {
       return true;
     },
     checkForm(event) {
+      event.preventDefault();
+
       if (this.validation()) {
         // Has no errors
         this.error = false;
-        // What do you do?
-        if (this.hasSuccessMessage) {
-          this.successful = true;
-        } else {
-          // Submit form
-          return true;
-        }
-      }
+        // Preparing form data
+        let formData = {};
+        Object.keys(this.data).map((key) => {
+          if (this.data[key].required) {
+            formData[key] = this.data[key].value;
+          }
+        });
 
-      this.error = true;
-      event.preventDefault();
+        this.$emit("submitForm", formData);
+      } else {
+        this.error = true;
+      }
     },
   },
 };

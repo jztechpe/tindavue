@@ -100,7 +100,11 @@
         <p class="has-text-centered is-flex-grow-1">Iniciar sesión</p>
       </template>
       <template #body>
-        <jz-form :fields="loginFields" :hasSuccessMessage="false">
+        <jz-form
+          :fields="loginFields"
+          :successful="loginSuccessful"
+          @submitForm="handleLoginSubmit"
+        >
           <template slot="afterSubmit">
             <div class="field">
               <div class="control has-text-centered">
@@ -119,14 +123,18 @@
         <p class="has-text-centered is-flex-grow-1">Crea tu cuenta</p>
       </template>
       <template #body>
-        <jz-form :fields="registerFields" :hasSuccessMessage="true">
+        <jz-form
+          :fields="registerFields"
+          :successful="registerSuccessful"
+          @submitForm="handleRegisterSubmit"
+        >
           <template slot="success" slot-scope="row">
             <p class="has-text-centered mb-5">
               Cuenta creada satisfactoriamente
             </p>
             <p class="is-size-7 has-text-centered mb-1">Email</p>
             <p class="has-text-weight-bold has-text-centered">
-              {{ row.email }}
+              {{ row.data.Username.value }}
             </p>
             <p class="has-text-centered mt-3">
               <a
@@ -172,6 +180,8 @@ export default {
       showModal: false,
       showLogin: false,
       showRegister: false,
+      loginSuccessful: false,
+      registerSuccessful: false,
       registerFields: [
         {
           name: "firstName",
@@ -188,19 +198,19 @@ export default {
           required: true,
         },
         {
-          name: "email",
+          name: "Username",
           type: "email",
           id: "register-email",
           placeholder: "Email",
           required: true,
         },
         {
-          name: "password",
+          name: "Password",
           type: "password",
           id: "register-password",
-          required: true,
           sinc: "rePassword",
           placeholder: "Contraseña",
+          required: true,
           min: 8,
         },
         {
@@ -210,7 +220,6 @@ export default {
           placeholder: "Verificar contraseña",
           after: `<p class="help has-text-grey-light">*Contraseña con un mínimo de 8 caracteres</p>`,
           min: 8,
-          required: true,
         },
         {
           name: "submit",
@@ -221,14 +230,14 @@ export default {
       ],
       loginFields: [
         {
-          name: "email",
+          name: "Username",
           type: "email",
           id: "login-email",
           placeholder: "Email",
           required: true,
         },
         {
-          name: "password",
+          name: "Password",
           type: "password",
           id: "register-password",
           placeholder: "Contraseña",
@@ -289,6 +298,16 @@ export default {
         { text: "M", value: "M", disabled: false },
       ],
     };
+  },
+  methods: {
+    handleLoginSubmit(data) {
+      console.log(data);
+      // this.loginSuccessful = true;
+    },
+    handleRegisterSubmit(data) {
+      console.log(data);
+      this.registerSuccessful = true;
+    },
   },
 };
 </script>
