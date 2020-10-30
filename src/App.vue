@@ -84,7 +84,7 @@
       Open from right
     </button>
 
-    <jz-sidebar v-model="sidebarRight" :burger-icon="false" right :width="360">
+    <jz-sidebar v-model="sidebarRight" :burger-icon="false" right width="360">
       <template #content>
         <div class="m5-3 ml-5" style="heigth: 200vh">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum,

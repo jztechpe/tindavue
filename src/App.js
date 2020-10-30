@@ -1,12 +1,12 @@
 import '@juntoz/tindacss/scss/tinda.scss';
 import JzInputCounter from './components/JzInputCounter';
 import JzMenu from './components/JzMenu';
-import JzSidebar from './components/JzSidebar/JzSidebar.vue';
+import JzSidebar from './components/JzSidebar/';
 import JzCollapse from './components/JzCollapse';
 import JzSelectFirstImage from './components/JzSelectFirstImage';
 import JzSelectList from './components/JzSelectList';
 import JzModal from './components/JzModal';
-import JzDropdown from './components/JzDropdown/JzDropdown';
+import JzDropdown from './components/JzDropdown/';
 import JzLoginForm from './components/JzLoginForm/JzLoginForm';
 import JzRegisterForm from './components/JzRegisterForm/JzRegisterForm';
 
