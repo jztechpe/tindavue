@@ -1,9 +1,10 @@
 <template>
   <div id="app" class="container">
-    <h3>Input counter</h3>
-
+    <h3 class="mb-3">Input counter</h3>
     <jz-input-counter v-model="quantity"></jz-input-counter>
 
+    <hr />
+    <h3>JzMenu</h3>
     <div class="mt-5 mb-5">
       <button @click="isMenuOpen = true" class="button is-primary">
         Open Menu
@@ -28,9 +29,15 @@
       </template>
     </jz-menu>
 
+    <hr />
+
+    <h3>JzDropdown</h3>
+
     <jz-dropdown :is-hoverable="true" :is-right="true">
       <template v-slot:trigger>
-        <button class="button" @click="isDropDownOpen = true">Hover to open dropdown</button>  
+        <button class="button is-info" @click="isDropDownOpen = true">
+          Hover to open dropdown
+        </button>
       </template>
       <template v-slot:content>
         <div class="dropdown-item is-large">
@@ -41,7 +48,12 @@
     </jz-dropdown>
     <jz-dropdown v-model="isDropdownOpen">
       <template v-slot:trigger>
-        <button class="button" @click="isDropdownOpen = true">Click to open dropdown</button>  
+        <button
+          class="button is-info is-light ml-3"
+          @click="isDropdownOpen = true"
+        >
+          Click to open dropdown
+        </button>
       </template>
       <template v-slot:content>
         <div class="dropdown-item is-large">
@@ -51,6 +63,39 @@
       </template>
     </jz-dropdown>
 
+    <hr />
+    <h3>JzSidebar</h3>
+
+    <button class="button is-info is-light" @click="isSidebarOpen = true">
+      Open Sidebar
+    </button>
+
+    <jz-sidebar v-model="isSidebarOpen" :burger-icon="false">
+      <template #content>
+        <div class="m5-3 ml-5">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum,
+          tempora odit? Optio soluta aperiam enim, possimus obcaecati accusamus
+          perferendis, aliquid deserunt cum quas repellendus adipisci. Corporis
+          labore quidem ad. Magnam!
+        </div>
+      </template>
+    </jz-sidebar>
+    <button class="button is-info is-light" @click="sidebarRight = true">
+      Open from right
+    </button>
+
+    <jz-sidebar v-model="sidebarRight" :burger-icon="false" right :width="360">
+      <template #content>
+        <div class="m5-3 ml-5" style="heigth: 200vh">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum,
+          tempora odit? Optio soluta aperiam enim, possimus obcaecati accusamus
+          perferendis, aliquid deserunt cum quas repellendus adipisci. Corporis
+          labore quidem ad. Magnam!
+        </div>
+      </template>
+    </jz-sidebar>
+
+    <hr />
     <jz-collapse>
       <template v-slot:title>
         <p>Aquí podría ir un título de página</p>
@@ -91,7 +136,7 @@
       </button>
     </div>
 
-    <jz-modal v-model="showLogin"  class="modal--sign">
+    <jz-modal v-model="showLogin" class="modal--sign">
       <template #header>
         <p class="has-text-centered is-flex-grow-1">Iniciar sesión</p>
       </template>
@@ -111,75 +156,7 @@
   </div>
 </template>
 
-<script>
-import "@juntoz/tindacss/scss/tinda.scss";
-import JzInputCounter from "./components/JzInputCounter";
-import JzMenu from "./components/JzMenu";
-import JzCollapse from "./components/JzCollapse";
-import JzSelectFirstImage from "./components/JzSelectFirstImage";
-import JzSelectList from "./components/JzSelectList";
-import JzModal from "./components/JzModal";
-import JzDropdown from "./components/JzDropdown/JzDropdown";
-import JzLoginForm from "./components/JzLoginForm/JzLoginForm";
-import JzRegisterForm from "./components/JzRegisterForm/JzRegisterForm";
-
-import categories from './categories';
-
-export default {
-  name: "App",
-  components: {
-    JzInputCounter,
-    JzMenu,
-    JzCollapse,
-    JzSelectFirstImage,
-    JzSelectList,
-    JzModal,
-    JzDropdown,
-    JzLoginForm,
-    JzRegisterForm,
-  },
-  data() {
-    return {
-      showModal: false,
-      showLogin: false,
-      showRegister: false,
-      quantity: 1,
-      isMenuOpen: false,
-      isDropdownOpen: false,
-      categories: categories,
-      colorModel: null,
-      colorItems: [
-        {
-          text: "azul",
-          ImageSmall:
-            "https://jzcatalogstg.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/9df301a0e24911eaab06d941f3746bf3/70fc4ab0e32c11eaaee3b983d622c2a4/02cb8ef0e33811eabcf5b1535dd40a53.jpg",
-        },
-        {
-          text: "azul 2",
-          ImageSmall:
-            "https://jzcatalogstg.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/9df301a0e24911eaab06d941f3746bf3/70fc4ab0e32c11eaaee3b983d622c2a4/02cb8ef0e33811eabcf5b1535dd40a53.jpg",
-        },
-        {
-          text: "Verde",
-          ImageSmall:
-            "https://jzcatalogstg.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/9df301a0e24911eaab06d941f3746bf3/70fc4ab0e32c11eaaee3b983d622c2a4/2723e900e33811eabcf5b1535dd40a53.jpg",
-        },
-        {
-          text: "Rojo",
-          ImageSmall:
-            "https://jzcatalogstg.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/9df301a0e24911eaab06d941f3746bf3/2c799a60e7c211ea9c9b79761bb77924/5e024460e7c211ea9c9b79761bb77924.png",
-        },
-      ],
-      tallaModel: "",
-      tallaModel2: null,
-      tallaItems: [
-        { text: "S", value: "S", disabled: true },
-        { text: "M", value: "M", disabled: false },
-      ],
-    };
-  },
-};
-</script>
+<script src="./App.js"></script>
 
 <style lang="scss">
 #app {

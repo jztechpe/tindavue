@@ -1,5 +1,5 @@
 <template>
-  <div class="dropdown" :class="classes" v-click-outside="onClickOutside">
+  <div class="dropdown" :class="classes" v-click-outside="vcoConfig">
     <div v-if="!isHoverable" class="dropdown-trigger">
       <slot name="trigger"></slot>
     </div>
@@ -36,6 +36,21 @@ export default {
       default: false
     }
   },
+  data () {
+    return {
+      vcoConfig: {
+        handler: this.onClickOutside,
+        middleware: this.middleware,
+        events: ['dblclick', 'click'],
+        // Note: The default value is true, but in case you want to activate / deactivate
+        //       this directive dynamically use this attribute.
+        isActive: true,
+        // Note: The default value is true. See "Detecting Iframe Clicks" section
+        //       to understand why this behaviour is behind a flag.
+        detectIFrame: true
+      }
+    }
+  },
   methods: {
     open() {
       this.$emit('input', true);
@@ -44,9 +59,7 @@ export default {
       this.$emit('input', false);
     },
     onClickOutside () {
-      if (this.value) {
-        this.close();
-      }
+      this.close();
     }
   },
   computed: {
