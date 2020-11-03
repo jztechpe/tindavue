@@ -141,7 +141,21 @@
         <p class="has-text-centered is-flex-grow-1">Iniciar sesión</p>
       </template>
       <template #body>
-        <JzLoginForm></JzLoginForm>
+        <jz-form
+          :fields="loginFields"
+          :successful="loginSuccessful"
+          @submitForm="handleLoginSubmit"
+        >
+          <template slot="afterSubmit">
+            <div class="field">
+              <div class="control has-text-centered">
+                <p class="mt-2">
+                  ¿No tienes una cuenta? <a href="#">Regístrate</a>
+                </p>
+              </div>
+            </div>
+          </template>
+        </jz-form>
       </template>
     </jz-modal>
 
@@ -150,7 +164,28 @@
         <p class="has-text-centered is-flex-grow-1">Crea tu cuenta</p>
       </template>
       <template #body>
-        <JzRegisterForm></JzRegisterForm>
+        <jz-form
+          :fields="registerFields"
+          :successful="registerSuccessful"
+          @submitForm="handleRegisterSubmit"
+        >
+          <template slot="success" slot-scope="row">
+            <p class="has-text-centered mb-5">
+              Cuenta creada satisfactoriamente
+            </p>
+            <p class="is-size-7 has-text-centered mb-1">Email</p>
+            <p class="has-text-weight-bold has-text-centered">
+              {{ row.data.Username.value }}
+            </p>
+            <p class="has-text-centered mt-3">
+              <a
+                type="submit"
+                class="button is-primary is-uppercase has-text-weight-semibold py-2"
+                >Ingresar</a
+              >
+            </p>
+          </template>
+        </jz-form>
       </template>
     </jz-modal>
   </div>
