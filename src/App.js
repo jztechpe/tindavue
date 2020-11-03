@@ -7,8 +7,6 @@ import JzSelectFirstImage from './components/JzSelectFirstImage';
 import JzSelectList from './components/JzSelectList';
 import JzModal from './components/JzModal';
 import JzDropdown from './components/JzDropdown/';
-import JzLoginForm from './components/JzLoginForm/JzLoginForm';
-import JzRegisterForm from './components/JzRegisterForm/JzRegisterForm';
 
 import categories from './categories';
 
@@ -22,9 +20,7 @@ export default {
     JzSelectFirstImage,
     JzSelectList,
     JzModal,
-    JzDropdown,
-    JzLoginForm,
-    JzRegisterForm,
+    JzDropdown
   },
   data() {
     return {
@@ -42,30 +38,30 @@ export default {
         {
           text: 'azul',
           ImageSmall:
-            'https://jzcatalogstg.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/9df301a0e24911eaab06d941f3746bf3/70fc4ab0e32c11eaaee3b983d622c2a4/02cb8ef0e33811eabcf5b1535dd40a53.jpg',
+            'https://jzcatalogstg.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/9df301a0e24911eaab06d941f3746bf3/70fc4ab0e32c11eaaee3b983d622c2a4/02cb8ef0e33811eabcf5b1535dd40a53.jpg'
         },
         {
           text: 'azul 2',
           ImageSmall:
-            'https://jzcatalogstg.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/9df301a0e24911eaab06d941f3746bf3/70fc4ab0e32c11eaaee3b983d622c2a4/02cb8ef0e33811eabcf5b1535dd40a53.jpg',
+            'https://jzcatalogstg.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/9df301a0e24911eaab06d941f3746bf3/70fc4ab0e32c11eaaee3b983d622c2a4/02cb8ef0e33811eabcf5b1535dd40a53.jpg'
         },
         {
           text: 'Verde',
           ImageSmall:
-            'https://jzcatalogstg.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/9df301a0e24911eaab06d941f3746bf3/70fc4ab0e32c11eaaee3b983d622c2a4/2723e900e33811eabcf5b1535dd40a53.jpg',
+            'https://jzcatalogstg.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/9df301a0e24911eaab06d941f3746bf3/70fc4ab0e32c11eaaee3b983d622c2a4/2723e900e33811eabcf5b1535dd40a53.jpg'
         },
         {
           text: 'Rojo',
           ImageSmall:
-            'https://jzcatalogstg.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/9df301a0e24911eaab06d941f3746bf3/2c799a60e7c211ea9c9b79761bb77924/5e024460e7c211ea9c9b79761bb77924.png',
-        },
+            'https://jzcatalogstg.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/9df301a0e24911eaab06d941f3746bf3/2c799a60e7c211ea9c9b79761bb77924/5e024460e7c211ea9c9b79761bb77924.png'
+        }
       ],
       tallaModel: '',
       tallaModel2: null,
       tallaItems: [
         { text: 'S', value: 'S', disabled: true },
-        { text: 'M', value: 'M', disabled: false },
-      ],
+        { text: 'M', value: 'M', disabled: false }
+      ]
     };
-  },
+  }
 };
