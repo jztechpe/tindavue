@@ -1,9 +1,10 @@
 <template>
   <div id="app" class="container">
-    <h3>Input counter</h3>
-
+    <h3 class="mb-3">Input counter</h3>
     <jz-input-counter v-model="quantity"></jz-input-counter>
 
+    <hr />
+    <h3>JzMenu</h3>
     <div class="mt-5 mb-5">
       <button @click="isMenuOpen = true" class="button is-primary">
         Open Menu
@@ -28,9 +29,13 @@
       </template>
     </jz-menu>
 
+    <hr />
+
+    <h3>JzDropdown</h3>
+
     <jz-dropdown :is-hoverable="true" :is-right="true">
       <template v-slot:trigger>
-        <button class="button" @click="isDropDownOpen = true">
+        <button class="button is-info" @click="isDropDownOpen = true">
           Hover to open dropdown
         </button>
       </template>
@@ -43,7 +48,10 @@
     </jz-dropdown>
     <jz-dropdown v-model="isDropdownOpen">
       <template v-slot:trigger>
-        <button class="button" @click="isDropdownOpen = true">
+        <button
+          class="button is-info is-light ml-3"
+          @click="isDropdownOpen = true"
+        >
           Click to open dropdown
         </button>
       </template>
@@ -55,6 +63,39 @@
       </template>
     </jz-dropdown>
 
+    <hr />
+    <h3>JzSidebar</h3>
+
+    <button class="button is-info is-light" @click="isSidebarOpen = true">
+      Open Sidebar
+    </button>
+
+    <jz-sidebar v-model="isSidebarOpen" :burger-icon="false">
+      <template #content>
+        <div class="m5-3 ml-5">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum,
+          tempora odit? Optio soluta aperiam enim, possimus obcaecati accusamus
+          perferendis, aliquid deserunt cum quas repellendus adipisci. Corporis
+          labore quidem ad. Magnam!
+        </div>
+      </template>
+    </jz-sidebar>
+    <button class="button is-info is-light" @click="sidebarRight = true">
+      Open from right
+    </button>
+
+    <jz-sidebar v-model="sidebarRight" :burger-icon="false" right width="360">
+      <template #content>
+        <div class="m5-3 ml-5" style="heigth: 200vh">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum,
+          tempora odit? Optio soluta aperiam enim, possimus obcaecati accusamus
+          perferendis, aliquid deserunt cum quas repellendus adipisci. Corporis
+          labore quidem ad. Magnam!
+        </div>
+      </template>
+    </jz-sidebar>
+
+    <hr />
     <jz-collapse>
       <template v-slot:title>
         <p>Aquí podría ir un título de página</p>
@@ -150,167 +191,7 @@
   </div>
 </template>
 
-<script>
-import "@juntoz/tindacss/scss/tinda.scss";
-import JzInputCounter from "./components/JzInputCounter";
-import JzMenu from "./components/JzMenu";
-import JzCollapse from "./components/JzCollapse";
-import JzSelectFirstImage from "./components/JzSelectFirstImage";
-import JzSelectList from "./components/JzSelectList";
-import JzModal from "./components/JzModal";
-import JzDropdown from "./components/JzDropdown/JzDropdown";
-import JzForm from "./components/JzForm/JzForm";
-
-import categories from "./categories";
-
-export default {
-  name: "App",
-  components: {
-    JzInputCounter,
-    JzMenu,
-    JzCollapse,
-    JzSelectFirstImage,
-    JzSelectList,
-    JzModal,
-    JzDropdown,
-    JzForm,
-  },
-  data() {
-    return {
-      showModal: false,
-      showLogin: false,
-      showRegister: false,
-      loginSuccessful: false,
-      registerSuccessful: false,
-      registerFields: [
-        {
-          name: "firstName",
-          type: "text",
-          id: "register-firstname",
-          placeholder: "Nombres",
-          required: true,
-        },
-        {
-          name: "lastName",
-          type: "text",
-          id: "register-lastname",
-          placeholder: "Apellidos",
-          required: true,
-        },
-        {
-          name: "Username",
-          type: "email",
-          id: "register-email",
-          placeholder: "Email",
-          required: true,
-        },
-        {
-          name: "Password",
-          type: "password",
-          id: "register-password",
-          sinc: "rePassword",
-          placeholder: "Contraseña",
-          required: true,
-          min: 8,
-        },
-        {
-          name: "rePassword",
-          type: "password",
-          id: "register-repassword",
-          placeholder: "Verificar contraseña",
-          after: `<p class="help has-text-grey-light">*Contraseña con un mínimo de 8 caracteres</p>`,
-          min: 8,
-        },
-        {
-          name: "submit",
-          type: "submit",
-          id: "register-submit",
-          value: "Crear",
-        },
-      ],
-      loginFields: [
-        {
-          name: "Username",
-          type: "email",
-          id: "login-email",
-          placeholder: "Email",
-          required: true,
-        },
-        {
-          name: "Password",
-          type: "password",
-          id: "register-password",
-          placeholder: "Contraseña",
-          required: true,
-          enableShowPassword: true,
-          after: `<div
-                    class="field is-grouped is-justify-content-space-between is-align-items-center mb-4 mt-2"
-                  >
-                    <div class="control">
-                      <label class="mb-0 pl-0">
-                        <input type="checkbox" class="field-checkbox" />
-                        Recordar mi cuenta
-                      </label>
-                    </div>
-                    <div class="control">
-                      <a href="#">¿Olvidaste tu contraseña?</a>
-                    </div>
-                  </div>`,
-        },
-        {
-          name: "submit",
-          type: "submit",
-          id: "register-submit",
-          value: "Iniciar sesión",
-        },
-      ],
-      quantity: 1,
-      isMenuOpen: false,
-      isDropdownOpen: false,
-      categories: categories,
-      colorModel: null,
-      colorItems: [
-        {
-          text: "azul",
-          ImageSmall:
-            "https://jzcatalogstg.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/9df301a0e24911eaab06d941f3746bf3/70fc4ab0e32c11eaaee3b983d622c2a4/02cb8ef0e33811eabcf5b1535dd40a53.jpg",
-        },
-        {
-          text: "azul 2",
-          ImageSmall:
-            "https://jzcatalogstg.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/9df301a0e24911eaab06d941f3746bf3/70fc4ab0e32c11eaaee3b983d622c2a4/02cb8ef0e33811eabcf5b1535dd40a53.jpg",
-        },
-        {
-          text: "Verde",
-          ImageSmall:
-            "https://jzcatalogstg.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/9df301a0e24911eaab06d941f3746bf3/70fc4ab0e32c11eaaee3b983d622c2a4/2723e900e33811eabcf5b1535dd40a53.jpg",
-        },
-        {
-          text: "Rojo",
-          ImageSmall:
-            "https://jzcatalogstg.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/9df301a0e24911eaab06d941f3746bf3/2c799a60e7c211ea9c9b79761bb77924/5e024460e7c211ea9c9b79761bb77924.png",
-        },
-      ],
-      tallaModel: "",
-      tallaModel2: null,
-      tallaItems: [
-        { text: "S", value: "S", disabled: true },
-        { text: "M", value: "M", disabled: false },
-      ],
-    };
-  },
-  methods: {
-    handleLoginSubmit(data) {
-      console.log(data);
-      // this.loginSuccessful = true;
-    },
-    handleRegisterSubmit(data) {
-      console.log(data);
-      this.registerSuccessful = true;
-    },
-  },
-};
-</script>
+<script src="./App.js"></script>
 
 <style lang="scss">
 #app {
