@@ -1,5 +1,5 @@
 <template>
-  <div ref="wrapper" class="wrapper">
+  <div ref="wrapper" class="wrapper" :class="{ 'bm-menu-full-desktop': fullDesktop }">
     <div v-if="value" class="bm-overlay" @click="closeMenu"></div>
     <div ref="sideNav" class="bm-menu" :class="{ 'bm-menu-active': value }">
       <nav class="bm-item-list">
@@ -14,6 +14,7 @@
           :item="category"
           v-for="(category, key) in categories"
           :key="key"
+          :fullDesktop="fullDesktop"
         />
 
         <slot name="footer"></slot>
@@ -109,6 +110,11 @@ export default {
       required: false,
       default: true,
     },
+    fullDesktop: {
+      type: Boolean,
+      required: false,
+      default: false,
+    }
   },
   methods: {
     openMenu() {
@@ -200,7 +206,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .wrapper {
   height: auto !important;
 }

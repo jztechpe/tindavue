@@ -25,10 +25,9 @@ export default {
   data() {
     return {
       showModal: false,
-      showLogin: false,
-      showRegister: false,
       quantity: 1,
       isMenuOpen: false,
+      isMenuFullOpen: false,
       isSidebarOpen: false,
       sidebarRight: false,
       isDropdownOpen: false,

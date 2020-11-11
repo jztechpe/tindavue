@@ -30,6 +30,32 @@
     </jz-menu>
 
     <hr />
+    <h3>JzMenu Full Desktop</h3>
+    <div class="mt-5 mb-5">
+      <button @click="isMenuFullOpen = true" class="button is-primary">
+        Open Menu Full Desktop
+      </button>
+    </div>
+    <jz-menu v-model="isMenuFullOpen" :categories="categories" :fullDesktop="true" :burgerIcon="false">
+      <template v-slot:header>
+        <a href="/">Home</a>
+        <a href="#!">Mi cuenta</a>
+        <a href="#!">Mis ordenes</a>
+      </template>
+      <template v-slot:footer>
+        <div class="line">
+          <label>Servicio al cliente</label>
+        </div>
+
+        <a href="#">Cambios y devoluciones</a>
+        <a href="#">Política de privacidad</a>
+        <a href="#">Términos legales</a>
+        <a href="#">Términos y condiciones</a>
+        <a href="#">Contáctenos</a>
+      </template>
+    </jz-menu>
+
+    <hr />
 
     <h3>JzDropdown</h3>
 
