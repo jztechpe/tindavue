@@ -73,14 +73,10 @@ export default {
       return window.matchMedia('(min-width: 1025px)').matches;
     },
     onClickItem() {
-      console.log('clicked item');
-      console.log('prop desktop', this.fullDesktop);
       if (this.isLeaf) {
         window.location.href = this.item.link;
       } else {
-        if (this.fullDesktop && this.isDesktop()) {
-          console.log('disabled click');
-        } else {
+        if (!this.fullDesktop || !this.isDesktop()) {
           this.isOpen = !this.isOpen;
         }
       }
