@@ -16,13 +16,14 @@
         />
       </svg>
     </div>
-    <template v-if="!isLeaf">
+    <template v-show="!isLeaf">
       <TransitionExpand>
-        <div class="jz-menu-dropdown-children" v-if="isOpen">
+        <div class="jz-menu-dropdown-children" v-show="isOpen">
           <JzMenuDropdown
             :item="subItem"
             v-for="(subItem, i) in item.children"
             :key="i"
+            :fullDesktop="fullDesktop"
           />
         </div>
       </TransitionExpand>
@@ -41,6 +42,11 @@ export default {
       type: Object,
       default: {},
     },
+    fullDesktop: {
+      type: Boolean,
+      default: false,
+      required: false,
+    }
   },
   components: {
     JzMenuDropdown,
@@ -63,11 +69,16 @@ export default {
     },
   },
   methods: {
+    isDesktop() {
+      return window.matchMedia('(min-width: 1025px)').matches;
+    },
     onClickItem() {
       if (this.isLeaf) {
         window.location.href = this.item.link;
       } else {
-        this.isOpen = !this.isOpen;
+        if (!this.fullDesktop || !this.isDesktop()) {
+          this.isOpen = !this.isOpen;
+        }
       }
     },
   },
