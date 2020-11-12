@@ -1,5 +1,5 @@
 <template>
-  <section class="jz-menu-dropdown" @click="onClickItem()">
+  <section class="jz-menu-dropdown" @click="onClickItem()" @mouseover="onHoverItem()" @mouseleave="onLeaveItem()">
     <div class="jz-menu-dropdown-item dropdown-item" :class="classX">
       <p>{{ item.name }}</p>
 
@@ -16,9 +16,9 @@
         />
       </svg>
     </div>
-    <template v-show="!isLeaf">
+    <template v-if="!isLeaf">
       <TransitionExpand>
-        <div class="jz-menu-dropdown-children" v-show="isOpen">
+        <div class="jz-menu-dropdown-children" v-if="isOpen">
           <JzMenuDropdown
             :item="subItem"
             v-for="(subItem, i) in item.children"
@@ -81,6 +81,16 @@ export default {
         }
       }
     },
+    onHoverItem() {
+      if (this.fullDesktop && this.isDesktop()) {
+        this.isOpen = true;
+      }
+    },
+    onLeaveItem() {
+      if (this.fullDesktop && this.isDesktop()) {
+        this.isOpen = false;
+      }
+    }
   },
 };
 </script>
