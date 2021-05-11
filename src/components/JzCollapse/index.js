@@ -1,3 +1,3 @@
-import JzCollapse from './JzCollapse'
+import JzCollapse from './JzCollapse.vue'
 
 export default JzCollapse;

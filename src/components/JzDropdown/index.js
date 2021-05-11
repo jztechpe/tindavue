@@ -1,3 +1,3 @@
-import JzDropdown from './JzDropdown';
+import JzDropdown from './JzDropdown.vue';
 
 export default JzDropdown;

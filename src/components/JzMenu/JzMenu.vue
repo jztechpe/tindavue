@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import JzMenuDropdown from "./JzMenuDropdown";
+import JzMenuDropdown from "./JzMenuDropdown.vue";
 
 export default {
   name: "JzMenu",

@@ -1,4 +1,4 @@
-import * as components from './src/components';
+import * as components from './components';
 
 const ComponentLibrary = {
   install(Vue, options = {}) {

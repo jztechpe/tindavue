@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import JzMenuDropdown from "./JzMenuDropdown";
+import JzMenuDropdown from "./JzMenuDropdown.vue";
 import TransitionExpand from "../transitions/TransitionExpand.vue";
 
 export default {
