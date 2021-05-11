@@ -2,6 +2,7 @@
   "name": "@juntoz/tindavue",
   "version": "0.0.26",
   "private": false,
+  "main": "src/index.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "webpack --config config/webpack.config.js",
