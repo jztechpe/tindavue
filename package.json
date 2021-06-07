@@ -1,6 +1,6 @@
 {
-  "name": "@juntoz/tindavue",
-  "version": "0.0.26",
+  "name": "@jztechpe-pub/tindavue",
+  "version": "1.0.0",
   "private": false,
   "main": "src/index.js",
   "scripts": {
@@ -9,8 +9,9 @@
     "build-old": "vue-cli-service build",
     "build-package": "vue-cli-service build --target lib --name JuntozComponents ./index.js"
   },
+  "repository": "https://github.com/jztechpe/tindavue.git",
   "dependencies": {
-    "@juntoz/tindacss": "0.0.17",
+    "@jztechpe-pub/tindacss": "1.0.0",
     "core-js": "^3.6.5",
     "v-click-outside": "^3.1.2",
     "vue": "^2.6.12",

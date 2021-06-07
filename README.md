@@ -1,5 +1,10 @@
 # vue-components
 
+# note about npm scope
+This package is published to jztechpe-pub which is our public scoped registry in npm.
+
+We had to do this like this because we have our own github packages private registry so it was not possible to combine them both during our development.
+
 ## Project setup
 ```
 npm install
