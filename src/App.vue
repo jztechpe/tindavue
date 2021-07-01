@@ -6,6 +6,8 @@
     </button>
     <jz-modal v-model="showModal">
       <template slot="header"> header </template>
+      <template slot="body"> body </template>
+      <template slot="footer"> footer </template>
     </jz-modal>
 
     <h3 class="mb-3">Input counter</h3>
