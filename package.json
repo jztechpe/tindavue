@@ -21,7 +21,6 @@
     "@vue/cli-service": "^4.5.13",
     "css-loader": "^5.2.4",
     "file-loader": "^6.2.0",
-    "node-sass": "^6.0.0",
     "sass": "^1.26.10",
     "sass-loader": "^9.0.3",
     "vue-template-compiler": "^2.6.12"

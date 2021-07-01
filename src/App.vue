@@ -1,5 +1,13 @@
 <template>
   <div id="app" class="container">
+    <h3 class="mb-3">Modal</h3>
+    <button @click="showModal = true" class="button is-primary">
+      Open Modal
+    </button>
+    <jz-modal v-model="showModal">
+      <template slot="header"> header </template>
+    </jz-modal>
+
     <h3 class="mb-3">Input counter</h3>
     <jz-input-counter v-model="quantity"></jz-input-counter>
 
@@ -36,7 +44,12 @@
         Open Menu Full Desktop
       </button>
     </div>
-    <jz-menu v-model="isMenuFullOpen" :categories="categories" :fullDesktop="true" :burgerIcon="false">
+    <jz-menu
+      v-model="isMenuFullOpen"
+      :categories="categories"
+      :fullDesktop="true"
+      :burgerIcon="false"
+    >
       <template v-slot:header>
         <a href="/">Home</a>
         <a href="#!">Mi cuenta</a>
@@ -149,7 +162,6 @@
       :disabled="true"
     />
     <JzSelectList v-model="tallaModel2" title="Talla2" :items="['S', 'XS']" />
-
   </div>
 </template>
 

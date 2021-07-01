@@ -1,4 +1,4 @@
-import '@juntoz/tindacss/scss/tinda.scss';
+import '@jztechpe-pub/tindacss/scss/tinda.scss';
 import JzInputCounter from './components/JzInputCounter';
 import JzMenu from './components/JzMenu';
 import JzSidebar from './components/JzSidebar/';
