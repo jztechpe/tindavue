@@ -52,6 +52,11 @@ export default {
                 isSelected = index === this.selected.index;
             };
 
+            //
+            if (!this.value){
+                isSelected = index === 0;
+            };
+
             // Get disabled from item prop 
             if (item.disabled) isDisabled = item.disabled;
 

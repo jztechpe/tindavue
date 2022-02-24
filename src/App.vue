@@ -152,6 +152,7 @@
       :items="colorItems"
       item-text="text"
       item-value="ImageSmall"
+      item-selected="isSelected"
       :disabled="false"
     />
 
@@ -161,9 +162,17 @@
       :items="tallaItems"
       item-text="text"
       item-value="value"
-      :disabled="true"
+      :disabled="false"
     />
-    <JzSelectList v-model="tallaModel2" title="Talla2" :items="['S', 'XS']" />
+    <JzSelectList
+      v-model="tallaModel2"
+      title="Talla2.0"
+      :items="[
+        { text: 'X', value: 'X', disabled: false },
+        { text: 'XL', value: 'XL', disabled: false },
+      ]"
+      :disabled="false"
+    />
   </div>
 </template>
 
