@@ -18,6 +18,7 @@ export default {
             type: String,
             default: "value"
         },
+        firstImageByDefault: Boolean,
         disabled: Boolean
     },
     data() {
@@ -52,8 +53,8 @@ export default {
                 isSelected = index === this.selected.index;
             };
 
-            //
-            if (!this.value) {
+            //only select by default the first image if this prop is true
+            if (!this.value && this.firstImageByDefault) {
                 isSelected = index === 0;
                 if (isSelected) {
                     this.selectItem(item, index);

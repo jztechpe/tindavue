@@ -152,8 +152,8 @@
       :items="colorItems"
       item-text="text"
       item-value="ImageSmall"
-      item-selected="isSelected"
       :disabled="false"
+      :firstImageByDefault="true"
     />
 
     <JzSelectList
