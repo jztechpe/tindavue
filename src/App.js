@@ -35,30 +35,30 @@ export default {
       colorModel: null,
       colorItems: [
         {
-          text: 'azul',
+          text: 'Amarillo',
           ImageSmall:
-            'https://jzcatalogstg.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/9df301a0e24911eaab06d941f3746bf3/70fc4ab0e32c11eaaee3b983d622c2a4/02cb8ef0e33811eabcf5b1535dd40a53.jpg'
+            'https://jztechstgstocatalog.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/5b9fb7c0539111ec890cc31a5b8c3cfe/afb3bfb0838311eca58a610edcb063ca/c851a0f0838311eca58a610edcb063ca/3kg-iy0n1i-small-h4ojln.jpg'            
         },
         {
-          text: 'azul 2',
+          text: 'Naranja',
           ImageSmall:
-            'https://jzcatalogstg.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/9df301a0e24911eaab06d941f3746bf3/70fc4ab0e32c11eaaee3b983d622c2a4/02cb8ef0e33811eabcf5b1535dd40a53.jpg'
+            'https://jztechstgstocatalog.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/5b9fb7c0539111ec890cc31a5b8c3cfe/afb3bfb0838311eca58a610edcb063ca/f5fadbf0838511ecb955911542e16835/9kg-vxrdaj-small-se0tsz.jpg'
         },
         {
           text: 'Verde',
           ImageSmall:
-            'https://jzcatalogstg.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/9df301a0e24911eaab06d941f3746bf3/70fc4ab0e32c11eaaee3b983d622c2a4/2723e900e33811eabcf5b1535dd40a53.jpg'
+            'https://jztechstgstocatalog.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/5b9fb7c0539111ec890cc31a5b8c3cfe/afb3bfb0838311eca58a610edcb063ca/0c6f2670838611eca58a610edcb063ca/5kg-cgy6ag-small-cpmnut.jpg'
         },
         {
-          text: 'Rojo',
+          text: 'Celeste',
           ImageSmall:
-            'https://jzcatalogstg.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/9df301a0e24911eaab06d941f3746bf3/2c799a60e7c211ea9c9b79761bb77924/5e024460e7c211ea9c9b79761bb77924.png'
+            'https://jztechstgstocatalog.blob.core.windows.net/products/b58ac3ec05f44414b674d9244e4538a0/5b9fb7c0539111ec890cc31a5b8c3cfe/afb3bfb0838311eca58a610edcb063ca/462a5b00838611ec88811385377fc138/7kg-26bl0s-small-cqxmzm.jpg'
         }
       ],
       tallaModel: '',
       tallaModel2: null,
       tallaItems: [
-        { text: 'S', value: 'S', disabled: true },
+        { text: 'S', value: 'S', disabled: false },
         { text: 'M', value: 'M', disabled: false }
       ]
     };

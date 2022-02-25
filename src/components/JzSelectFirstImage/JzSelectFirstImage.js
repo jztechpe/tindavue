@@ -18,6 +18,7 @@ export default {
             type: String,
             default: "value"
         },
+        firstImageByDefault: Boolean,
         disabled: Boolean
     },
     data() {
@@ -50,6 +51,14 @@ export default {
             // Select item if has the same index that selected one.
             if (this.value) {
                 isSelected = index === this.selected.index;
+            };
+
+            //only select by default the first image if this prop is true
+            if (!this.value && this.firstImageByDefault) {
+                isSelected = index === 0;
+                if (isSelected) {
+                    this.selectItem(item, index);
+                }
             };
 
             // Get disabled from item prop 
