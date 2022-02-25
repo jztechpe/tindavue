@@ -53,8 +53,11 @@ export default {
             };
 
             //
-            if (!this.value){
+            if (!this.value) {
                 isSelected = index === 0;
+                if (isSelected) {
+                    this.selectItem(item, index);
+                }
             };
 
             // Get disabled from item prop 
